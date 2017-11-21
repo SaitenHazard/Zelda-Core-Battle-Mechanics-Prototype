@@ -57,19 +57,19 @@ public class CharacterBaseControl : MonoBehaviour
         m_InteractionModel.OnInteract();
     }
 
-    //protected void OnAttackPressed()
-    //{
-    //    if( m_MovementModel == null )
-    //    {
-    //        return;
-    //    }
+    protected void OnAttackPressed()
+    {
+        if( m_MovementModel == null )
+        {
+            return;
+        }
 
-    //    if( m_MovementModel.CanAttack() == false )
-    //    {
-    //        return;
-    //    }
+        //if( m_MovementModel.CanAttack() == false )
+        //{
+        //    return;
+        //}
 
-    //    m_MovementModel.DoAttack();
-    //    m_MovementView.DoAttack();
-    //}
+        m_MovementModel.DoAttack();
+        m_MovementView.DoAttack();
+    }
 }

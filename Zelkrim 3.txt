@@ -57,6 +57,47 @@ Exp = Diginity
 Enemies drop dignity when they loose
 Has to be collected by walking close
 
+Skills
+-----
+*All are unlockable
+*Unlock 1 skills after each level gained
+
+Weapons:
+Sword - Unlocked from beginning
+Spear
+Bow
+
+Weapon enhancements:
+Sword - Charge
+Spear - Charge
+*consumes AP with each use
+Bow - increase holster
+
+Elemental add ons for weapons:
+Earth
+Fire
+Water
+*consumes AP with each use
+
+Enemy effectors:
+Poison
+Mind Control
+Paralysis
+*consumes AP with each use
+*effects enemy right infront
+
+Area Effectors:
+Shield - Witcher 3 like protective magic armor
+Erupt - Effect all in a radius
+Land-mines - Kindom of Amalur like land mines
+*consumes AP with each use
+
+Holy Item Transformations:
+Berserk - DBZ inspired, Only attack Kamehameha
+Speedster - Flash inspired, slow down time
+Invisible-man - The invisible man inpsired, undtectable and cannot do any actions
+*consumes AP gauge fast
+
 Death
 -----
 Foe who made the finishing blow will steal some money from the player and will become stronger. After a while the enemy buff and the money will both be lost forever. The money can be retrieved back if the enemy is defeated before time runs out.
@@ -179,7 +220,7 @@ Turn based tactic Style(R)
 Timed Battle Quest (R)
 Kills Challenge Quest(R)
 Turn based tactic Style(R)
-Mercnary(R)
+Anonymous Wanted Bullatin(R)
 Turn based tactic fuson turn base Style(R)
 Optional Boss Quests (3)
 Metroid Vania Quest

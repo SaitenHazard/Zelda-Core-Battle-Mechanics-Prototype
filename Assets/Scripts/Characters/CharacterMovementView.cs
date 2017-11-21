@@ -96,20 +96,20 @@ public class CharacterMovementView : MonoBehaviour
         Animator.SetBool( "IsMoving", m_MovementModel.IsMoving() );
     }
 
-    //public void DoAttack()
-    //{
-    //    Animator.SetTrigger( "DoAttack" );
-    //}
+    public void DoAttack()
+    {
+        Animator.SetTrigger( "DoAttack" );
+    }
 
-    //public void OnAttackStarted()
-    //{
+    public void OnAttackStarted()
+    {
         
-    //}
+    }
 
-    //public void OnAttackFinished()
-    //{
+    public void OnAttackFinished()
+    {
         
-    //}
+    }
 
     //public void ShowWeapon()
     //{

@@ -17,7 +17,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     private bool m_IsFrozen;
     private bool m_IsDirectionFrozen;
-    //private bool m_IsAttacking;
+    private bool m_IsAttacking;
     //private ItemType m_PickingUpObject = ItemType.None;
 
     //private ItemType m_EquippedWeapon = ItemType.None;
@@ -87,10 +87,10 @@ public class CharacterMovementModel : MonoBehaviour
             return;
         }
 
-        //if( m_IsAttacking == true )
-        //{
-        //    return;
-        //}
+        if( m_IsAttacking == true )
+        {
+            return;
+        }
 
         //if( IsBeingPushed() == true )
         //{
@@ -137,7 +137,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     void UpdateMovement()
     {
-        if( m_IsFrozen == true) //|| m_IsAttacking == true )
+        if( m_IsFrozen == true || m_IsAttacking == true )
         {
             m_Body.velocity = Vector2.zero;
             return;
@@ -367,12 +367,12 @@ public class CharacterMovementModel : MonoBehaviour
     //    return m_EquippedWeapon;
     //}
 
-    //public bool CanAttack()
-    //{
-    //    if( m_IsAttacking == true )
-    //    {
-    //        return false;
-    //    }
+    public bool CanAttack()
+    {
+        if( m_IsAttacking == true )
+        {
+            return false;
+        }
 
     //    if( m_EquippedWeapon == ItemType.None )
     //    {
@@ -389,26 +389,26 @@ public class CharacterMovementModel : MonoBehaviour
     //        return false;
     //    }
 
-    //    return true;
-    //}
+        return true;
+    }
 
     //public void SetIsAbleToAttack( bool isAbleToAttack )
     //{
     //    m_IsAbleToAttack = isAbleToAttack;
     //}
 
-    //public void DoAttack()
-    //{
+    public void DoAttack()
+    {
         
-    //}
+    }
 
-    //public void OnAttackStarted()
-    //{
-    //    m_IsAttacking = true;
-    //}
+    public void OnAttackStarted()
+    {
+        m_IsAttacking = true;
+    }
 
-    //public void OnAttackFinished()
-    //{
-    //    m_IsAttacking = false;
-    //}
+    public void OnAttackFinished()
+    {
+        m_IsAttacking = false;
+    }
 }
