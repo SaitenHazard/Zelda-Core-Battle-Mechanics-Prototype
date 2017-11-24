@@ -168,6 +168,26 @@ Initally 1 slot
 Unlock 3 more slots
 Each slot can hold 3 items
 
+Items
+----
+Add Life
+Add AP
+Next level
+Regen AP
+Regen Life
++ Damage
+Temporary Life bar
+Temporary SP Bar
+Compnaion Life Bar
+Companion call +1
+
+Companion
+----
+*can call once everday
+*dissapers if life reaches 0
+*has it own life bar
+*has 3 stages
+
 Movement
 ----
 Movement = 8 direction
@@ -199,6 +219,9 @@ F = Change transformations
 F (hold) = Activate transformations
 1, 2, 3, 4 = items
 
+Repspec
+-----
+
 Achievements
 -----
 All red chests
@@ -221,7 +244,7 @@ Timed Battle Quest (R)
 Kills Challenge Quest(R)
 Turn based tactic Style(R)
 Anonymous Wanted Bullatin(R)
-Turn based tactic fuson turn base Style(R)
+2d Side scrolling
 Optional Boss Quests (3)
 Metroid Vania Quest
 AA Quest 1 - Mind Control - Monk Quest
@@ -235,10 +258,11 @@ Random Branched Quest
 Escort Quest
 Partnered Quest
 Riddle Quest
+Maze
 Investigation Quest
 Collection from all over Quest
 QTE Quest
 Final Quest - after all other quests are completed
 
 with (R) 45
-without (R) 21
+without (R) 23

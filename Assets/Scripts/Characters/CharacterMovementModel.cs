@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Messaging;
 public class CharacterMovementModel : MonoBehaviour 
 {
     public float Speed;
-    //public Transform WeaponParent;
+    public Transform WeaponParent;
     //public Transform ShieldParent;
     //public Transform PickupItemParent;
 

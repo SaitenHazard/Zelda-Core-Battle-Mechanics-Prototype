@@ -46,6 +46,11 @@ Represents normal folks / Humans
 Cats are all female
 Dogs are all male
 
+Cliffs
+----
+Q = Companion
+2d Side scroller
+
 Out of the Island
 ----
 Dock
@@ -71,8 +76,15 @@ Merchants
 Shopkeepers mostly
 Looks like piggy banks
 
+Arcades
+----
+Inside Robopolis
+Turn based
+Turn based tactics
+
 Ruins of the Ancient
 -----
+Q = Randomly Generated Dugeong
 
 Slime
 -----
@@ -95,3 +107,13 @@ Mysterious
 No one knows where they come from
 Rumors has it when anyone dies a new ghost is born
 Great construction workers
+
+Terrain
+-----
+Opposites
+Regular
+Swamp
+Clouds
+Undergroud
+Digital
+Spirits

@@ -64,10 +64,10 @@ public class CharacterBaseControl : MonoBehaviour
             return;
         }
 
-        //if( m_MovementModel.CanAttack() == false )
-        //{
-        //    return;
-        //}
+        if( m_MovementModel.CanAttack() == false )
+        {
+            return;
+        }
 
         m_MovementModel.DoAttack();
         m_MovementView.DoAttack();

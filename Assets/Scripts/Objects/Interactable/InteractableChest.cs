@@ -4,8 +4,8 @@ using System.Collections;
 public class InteractableChest : InteractableBase
 {
     public Sprite OpenChestSprite;
-    //public ItemType ItemInChest;
-    //public int Amount;
+    public ItemType ItemInChest;
+    public int Amount;
 
     private bool m_IsOpen;
     private SpriteRenderer m_Renderer;
@@ -22,7 +22,7 @@ public class InteractableChest : InteractableBase
             return;
         }
 
-        //character.Inventory.AddItem( ItemInChest, Amount );
+        character.Inventory.AddItem( ItemInChest, Amount );
         m_Renderer.sprite = OpenChestSprite;
         m_IsOpen = true;
     }
