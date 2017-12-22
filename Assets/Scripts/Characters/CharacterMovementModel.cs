@@ -20,24 +20,24 @@ public class CharacterMovementModel : MonoBehaviour
     private bool m_IsAttacking;
     //private ItemType m_PickingUpObject = ItemType.None;
 
-    //private ItemType m_EquippedWeapon = ItemType.None;
+    private ItemType m_EquippedWeapon = ItemType.None;
     //private ItemType m_EquippedShield = ItemType.None;
 
     //private GameObject m_PickupItem;
 
-    //private Vector2 m_PushDirection;
-    //private float m_PushTime;
+    private Vector2 m_PushDirection;
+    private float m_PushTime;
 
     //private int m_LastSetDirectionFrameCount;
 
     //private float m_LastFreezeTime;
 
-    //private bool m_IsAbleToAttack = true;
+    private bool m_IsAbleToAttack = true;
 
     Vector2 m_ReceivedDirection;
 
-    //private bool m_IsOverrideSpeed;
-    //private float m_OverrideSpeed;
+    private bool m_IsOverrideSpeed;
+    private float m_OverrideSpeed;
 
     void Awake()
     {
@@ -47,7 +47,7 @@ public class CharacterMovementModel : MonoBehaviour
 
     void Update()
     {
-        //UpdatePushTime();
+        UpdatePushTime();
         UpdateDirection();
         ResetReceivedDirection();
     }
@@ -92,11 +92,11 @@ public class CharacterMovementModel : MonoBehaviour
             return;
         }
 
-        //if( IsBeingPushed() == true )
-        //{
-        //    m_MovementDirection = m_PushDirection;
-        //    return;
-        //}
+        if( IsBeingPushed() == true )
+        {
+            m_MovementDirection = m_PushDirection;
+            return;
+        }
 
         //if( Time.frameCount == m_LastSetDirectionFrameCount )
         //{
@@ -130,10 +130,10 @@ public class CharacterMovementModel : MonoBehaviour
         }
     }
 
-    //void UpdatePushTime()
-    //{
-    //    m_PushTime = Mathf.MoveTowards( m_PushTime, 0f, Time.deltaTime );
-    //}
+    void UpdatePushTime()
+    {
+        m_PushTime = Mathf.MoveTowards( m_PushTime, 0f, Time.deltaTime );
+    }
 
     void UpdateMovement()
     {
@@ -154,33 +154,33 @@ public class CharacterMovementModel : MonoBehaviour
             m_MovementDirection.Normalize();
         }
 
-        //if( IsBeingPushed() == true )
-        //{
-        //    m_Body.velocity = m_PushDirection;
-        //}
-        //else
-        //{
+        if( IsBeingPushed() == true )
+        {
+            m_Body.velocity = m_PushDirection;
+        }
+        else
+        {
             float speed = Speed;
 
-            //if( m_IsOverrideSpeed == true )
-            //{
-            //    speed = m_OverrideSpeed;
-            //}
+            if( m_IsOverrideSpeed == true )
+            {
+                speed = m_OverrideSpeed;
+            }
 
             m_Body.velocity = m_MovementDirection * speed;
-        //}
+        }
     }
 
-    //public void SetOverrideSpeedEnabled( bool enabled, float speed = 0f )
-    //{
-    //    m_IsOverrideSpeed = enabled;
-    //    m_OverrideSpeed = speed;
-    //}
+    public void SetOverrideSpeedEnabled( bool enabled, float speed = 0f )
+    {
+        m_IsOverrideSpeed = enabled;
+        m_OverrideSpeed = speed;
+    }
 
-    //public bool IsBeingPushed()
-    //{
-    //    return m_PushTime > 0;
-    //}
+    public bool IsBeingPushed()
+    {
+        return m_PushTime > 0;
+    }
 
     public bool IsFrozen()
     {
@@ -252,10 +252,10 @@ public class CharacterMovementModel : MonoBehaviour
         return m_MovementDirection != Vector3.zero;
     }
 
-    //public void EquipWeapon( ItemType itemType )
-    //{
-    //    EquipItem( itemType, ItemData.EquipPosition.SwordHand, WeaponParent, ref m_EquippedWeapon );
-    //}
+    public void EquipWeapon( ItemType itemType )
+    {
+        EquipItem( itemType, ItemData.EquipPosition.SwordHand, WeaponParent, ref m_EquippedWeapon );
+    }
 
     //public void EquipShield( ItemType itemType )
     //{
@@ -277,36 +277,36 @@ public class CharacterMovementModel : MonoBehaviour
     //    m_Character.Health.RegisterArmor( armorModel );
     //}
 
-    //GameObject EquipItem( ItemType itemType, ItemData.EquipPosition equipPosition, 
-    //                Transform itemParent, ref ItemType equippedItemSlot )
-    //{
-    //    if( itemParent == null )
-    //    {
-    //        return null;
-    //    }
+    GameObject EquipItem( ItemType itemType, ItemData.EquipPosition equipPosition, 
+                    Transform itemParent, ref ItemType equippedItemSlot )
+    {
+        if( itemParent == null )
+        {
+            return null;
+        }
 
-    //    ItemData itemData = Database.Item.FindItem( itemType );
+        ItemData itemData = Database.Item.FindItem( itemType );
 
-    //    if( itemData == null )
-    //    {
-    //        return null;
-    //    }
+        if( itemData == null )
+        {
+            return null;
+        }
 
-    //    if( itemData.IsEquipable != equipPosition )
-    //    {
-    //        return null;
-    //    }
+        if( itemData.IsEquipable != equipPosition )
+        {
+            return null;
+        }
 
-    //    equippedItemSlot = itemType;
+        equippedItemSlot = itemType;
 
-    //    GameObject newItemObject = (GameObject)Instantiate( itemData.Prefab );
+        GameObject newItemObject = (GameObject)Instantiate( itemData.Prefab );
 
-    //    newItemObject.transform.parent = itemParent;
-    //    newItemObject.transform.localPosition = Vector2.zero;
-    //    newItemObject.transform.localRotation = Quaternion.identity;
+        newItemObject.transform.parent = itemParent;
+        newItemObject.transform.localPosition = Vector2.zero;
+        newItemObject.transform.localRotation = Quaternion.identity;
 
-    //    return newItemObject;
-    //}
+        return newItemObject;
+    }
 
     //public void ShowItemPickup( ItemType itemType )
     //{
@@ -341,16 +341,16 @@ public class CharacterMovementModel : MonoBehaviour
     //    }
     //}
 
-    //public void PushCharacter( Vector2 pushDirection, float time )
-    //{
-    //    if( m_IsAttacking == true )
-    //    {
-    //        GetComponentInChildren<CharacterAnimationListener>().OnAttackFinished();
-    //    }
+    public void PushCharacter( Vector2 pushDirection, float time )
+    {
+        if( m_IsAttacking == true )
+        {
+            GetComponentInChildren<CharacterAnimationListener>().OnAttackFinished();
+        }
 
-    //    m_PushDirection = pushDirection;
-    //    m_PushTime = time;
-    //}
+        m_PushDirection = pushDirection;
+        m_PushTime = time;
+    }
 
     //public ItemType GetItemThatIsBeingPickedUp()
     //{
@@ -362,10 +362,10 @@ public class CharacterMovementModel : MonoBehaviour
     //    return m_EquippedShield;
     //}
 
-    //public ItemType GetEquippedWeapon()
-    //{
-    //    return m_EquippedWeapon;
-    //}
+    public ItemType GetEquippedWeapon()
+    {
+        return m_EquippedWeapon;
+    }
 
     public bool CanAttack()
     {
@@ -374,28 +374,28 @@ public class CharacterMovementModel : MonoBehaviour
             return false;
         }
 
-    //    if( m_EquippedWeapon == ItemType.None )
-    //    {
-    //        return false;
-    //    }
+        if( m_EquippedWeapon == ItemType.None )
+        {
+            return false;
+        }
 
-    //    if( IsBeingPushed() == true )
-    //    {
-    //        return false;
-    //    }
+        if( IsBeingPushed() == true )
+        {
+            return false;
+        }
 
-    //    if( m_IsAbleToAttack == false )
-    //    {
-    //        return false;
-    //    }
+        if( m_IsAbleToAttack == false )
+        {
+            return false;
+        }
 
         return true;
     }
 
-    //public void SetIsAbleToAttack( bool isAbleToAttack )
-    //{
-    //    m_IsAbleToAttack = isAbleToAttack;
-    //}
+    public void SetIsAbleToAttack( bool isAbleToAttack )
+    {
+        m_IsAbleToAttack = isAbleToAttack;
+    }
 
     public void DoAttack()
     {

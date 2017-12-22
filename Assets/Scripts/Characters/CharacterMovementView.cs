@@ -37,7 +37,7 @@ public class CharacterMovementView : MonoBehaviour
     {
         UpdateDirection();   
         //UpdatePickingUpAnimation();
-        //UpdateHit();
+        UpdateHit();
         //UpdateShield();
     }
 
@@ -75,10 +75,10 @@ public class CharacterMovementView : MonoBehaviour
     //    Animator.SetBool( "IsPickingUpTwoHanded", isPickingUpTwoHanded );
     //}
 
-    //void UpdateHit()
-    //{
-    //    Animator.SetBool( "IsHit", m_MovementModel.IsBeingPushed() );
-    //}
+    void UpdateHit()
+    {
+        Animator.SetBool( "IsHit", m_MovementModel.IsBeingPushed() );
+    }
 
     void UpdateDirection()
     {
@@ -122,10 +122,10 @@ public class CharacterMovementView : MonoBehaviour
         SetItemActive( m_MovementModel.WeaponParent, false );
     }
 
-    //public void SetSortingOrderOfWeapon( int sortingOrder )
-    //{
-    //    SetSortingOrderOfItem( m_MovementModel.WeaponParent, sortingOrder );
-    //}
+    public void SetSortingOrderOfWeapon( int sortingOrder )
+    {
+        SetSortingOrderOfItem( m_MovementModel.WeaponParent, sortingOrder );
+    }
 
     //public void SetSortingOrderOfPickupItem( int sortingOrder )
     //{
@@ -171,20 +171,20 @@ public class CharacterMovementView : MonoBehaviour
     //    shield.ReleaseShieldDirection();
     //}
 
-    //void SetSortingOrderOfItem( Transform itemParent, int sortingOrder )
-    //{
-    //    if( itemParent == null )
-    //    {
-    //        return;
-    //    }
+    void SetSortingOrderOfItem( Transform itemParent, int sortingOrder )
+    {
+        if( itemParent == null )
+        {
+            return;
+        }
 
-    //    SpriteRenderer[] spriteRenderers = itemParent.GetComponentsInChildren<SpriteRenderer>();
+        SpriteRenderer[] spriteRenderers = itemParent.GetComponentsInChildren<SpriteRenderer>();
 
-    //    foreach( SpriteRenderer spriteRenderer in spriteRenderers )
-    //    {
-    //        spriteRenderer.sortingOrder = sortingOrder;
-    //    }
-    //}
+        foreach( SpriteRenderer spriteRenderer in spriteRenderers )
+        {
+            spriteRenderer.sortingOrder = sortingOrder;
+        }
+    }
 
     void SetItemActive( Transform itemParent, bool doActivate )
     {

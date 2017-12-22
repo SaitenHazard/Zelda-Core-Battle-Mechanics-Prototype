@@ -19,7 +19,7 @@ public class CharacterAnimationListener : MonoBehaviour
         }
 
         ShowWeapon();
-        //SetSortingOrderOfWeapon(animationEvent.intParameter);
+        SetSortingOrderOfWeapon(animationEvent.intParameter);
         //SetShieldDirection(animationEvent.stringParameter);
     }
 
@@ -55,13 +55,13 @@ public class CharacterAnimationListener : MonoBehaviour
         }
     }
 
-    //public void SetSortingOrderOfWeapon(int sortingOrder)
-    //{
-    //    if (MovementView != null)
-    //    {
-    //        MovementView.SetSortingOrderOfWeapon(sortingOrder);
-    //    }
-    //}
+    public void SetSortingOrderOfWeapon(int sortingOrder)
+    {
+        if (MovementView != null)
+        {
+            MovementView.SetSortingOrderOfWeapon(sortingOrder);
+        }
+    }
 
     //public void SetSortingOrderOfPickupItem(int sortingOrder)
     //{

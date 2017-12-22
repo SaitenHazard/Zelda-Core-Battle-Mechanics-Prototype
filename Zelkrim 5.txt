@@ -1,0 +1,151 @@
+Inspiration
+----
+Gameplay - 2d Zelda
+World Building & Tone - Mother 3
+
+Elevator Pitch
+----
+Small open world game filled to the brim with unique and meanignful content
+
+Collectables
+----
+
+Loot
+----
+Quest - [Options], Items, Money
+Chests - Money, Igradients, Items
+Enemy Drop - Mostly money, Ingredients, Items
+Foreging - Ingredients
+Breakable - Ingredients, Money, Items
+
+Fast Travel
+----
+Will cost money
+Fixed points to and from
+
+Saves
+----
+Quick Saves - Consumable Item
+Save points - Free saves
+
+Stats
+----
+HP - Hit Points
+
+Death
+----
+Drop lots of money
+Foes dealing finishting blow will get it all
+Defeat foe to get money
+After sometime both money and foe powerup will be lost forever
+
+Secrets
+----
+Talk to specific NPS thrice to unlock [something]
+Use [projectile] to press button
+A chest that triggers a horde battle
+Random key drops that opens a secret door
+Bookself button that opens a secret door
+
+HP
+----
+Pay small fee to get full HP
+
+Randomness
+----
+Horde Battles - Trapped in an area and forced to battle
+
+Summons
+----
+Collect Ingredients to craft summont items, costs money to craft
+Use summon itsms in battle to call creature to aid
+1 summon item = 1 summon creature
+
+Item Mechanics
+----
+Start with 4 active slots
+Pay for 2 more
+
+Inventory
+----
+Limited
+Pay to increase
+
+Items
+----
++ Life
++ Damage
+Weapon Poison
+Shield (Witcher)
+Mines
+Radius Damage
+Full Screen Damage
++ Range
++ Weapon Fire
++ Weapon Poison
++ Weapon Earth
+Projectiles
+
+Equipments
+----
+*Change look
+*Passive Bonus
+Basic
+More money
+More ingradients
+More Items
+More Everything
+
+Movements
+----
+Movemnt = 8 direction
+Facing direction = 4 direction
+
+Stash Mechanics
+----
+Buy slots
+Each purchase = 6 slots
+Daily Payment
+
+Home Owner
+----
+-Free Stash
+-Free heal
+-Free summon craft
+-Free teleporter
+-Shelft with achivements
+
+Achievements
+----
+All red chests
+All quests
+All secrets
+All equips
+
+Quests
+-----
+Randomly Generated Dunegon Style (R)
+Turn based tactic Style (R)
+Turn based Style (R)
+Sword Craft Story 2 Style (R)
+Stardew Valley style Mini (R)
+2d Side scrolling 
+2d Side Scrolling Metroid Vania
+Metroid Vania
+Time Sensitive Quest
+Kill as many as you can before time runs out
+Gladiator Style (R)
+-Kills
+-Kill before time runs out
+-Kill x amount before time runs out
+Boss Battle (3)
+Summon Quest
+Branched Quest - Player decisions will change the outcome
+Puzzle Quest
+Escort Quest
+Partnered Quest
+Riddle Quest 
+Maze Quest
+Investigation Quest
+Fetch Quests x 3
+Final Quest - after all other quests are completed
