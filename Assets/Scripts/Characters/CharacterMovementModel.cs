@@ -28,7 +28,7 @@ public class CharacterMovementModel : MonoBehaviour
     private Vector2 m_PushDirection;
     private float m_PushTime;
 
-    //private int m_LastSetDirectionFrameCount;
+    private int m_LastSetDirectionFrameCount;
 
     //private float m_LastFreezeTime;
 
@@ -92,16 +92,16 @@ public class CharacterMovementModel : MonoBehaviour
             return;
         }
 
-        if( IsBeingPushed() == true )
+        if( IsBeingPushed() == true ) 
         {
             m_MovementDirection = m_PushDirection;
             return;
         }
 
-        //if( Time.frameCount == m_LastSetDirectionFrameCount )
-        //{
-            //return;
-        //}
+        if( Time.frameCount == m_LastSetDirectionFrameCount )
+        {
+            return;
+        }
 
         m_MovementDirection = new Vector3( m_ReceivedDirection.x, m_ReceivedDirection.y, 0 );
 
@@ -126,7 +126,7 @@ public class CharacterMovementModel : MonoBehaviour
             }
 
             m_FacingDirection = facingDirection;
-            //m_LastSetDirectionFrameCount = Time.frameCount;
+            m_LastSetDirectionFrameCount = Time.frameCount;
         }
     }
 

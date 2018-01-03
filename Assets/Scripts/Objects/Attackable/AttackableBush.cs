@@ -18,21 +18,21 @@ public class AttackableBush : AttackableBase
 
         //if( DestroyEffect != null )
         //{
-        //    GameObject destroyEffect = (GameObject)Instantiate( DestroyEffect );
-        //    destroyEffect.transform.position = transform.position;
+            //GameObject destroyEffect = (GameObject)Instantiate( DestroyEffect );
+            //destroyEffect.transform.position = transform.position;
         //}
     }
 
-    //public void DropLoot()
-    //{
-    //    BroadcastMessage( "OnLootDrop", SendMessageOptions.DontRequireReceiver );
-    //}
+    public void DropLoot()
+    {
+        BroadcastMessage( "OnLootDrop", SendMessageOptions.DontRequireReceiver );
+    }
 
     public override void OnHit( Collider2D hitCollider, ItemType item )
     {
         DestroyBush();
         CreateDestroyedPrefab();
-        //DropLoot();
+        DropLoot();
     }
 
     //void OnPickupObject( Character character )

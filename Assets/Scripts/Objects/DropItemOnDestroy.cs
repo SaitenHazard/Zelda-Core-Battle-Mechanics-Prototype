@@ -12,16 +12,33 @@ public class DropItemOnDestroy : MonoBehaviour
 
     void OnLootDrop()
     {
-        ItemData data = Database.Item.FindItem(DropItemType);
+        Debug.Log("Found Function");
 
-        if (data==null || data.Prefab == null)
+        float randomValue = Random.Range(0f, 1f);
+
+        if (randomValue > Probability)
         {
+            Debug.Log("Improbable");
 
             return;
         }
 
-        GameObject newLoot = (GameObject)Instantiate(data.Prefab, transform.position, Quaternion.identity);
-        Debug.Log("in");
+        ItemData data = Database.Item.FindItem(DropItemType);
 
+        if (data == null || data.Prefab == null)
+        {
+            Debug.Log("Last Return");
+
+            return;
+        }
+
+        //Transform dropPosition = DropPosition;
+
+        //if (dropPosition == null)
+        //{
+        //    dropPosition = transform;
+        //}
+
+        GameObject newLoot = (GameObject)Instantiate(data.Prefab, transform.position, Quaternion.identity);
     }
 }
