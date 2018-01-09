@@ -35,10 +35,16 @@ public class CharacterMovementView : MonoBehaviour
 
     public void Update() 
     {
-        UpdateDirection();   
+        UpdateDirection();
         //UpdatePickingUpAnimation();
+        UpdatePickupAnimation();
         UpdateHit();
         //UpdateShield();
+    }
+
+    void UpdatePickupAnimation()
+    {
+        Animator.SetBool("IsCarrying", m_MovementModel.getIsCarrying());
     }
 
     //void UpdateShield()
@@ -54,7 +60,7 @@ public class CharacterMovementView : MonoBehaviour
     //    if( m_MovementModel.IsFrozen() == true )
     //    {
     //        ItemType pickupItem = m_MovementModel.GetItemThatIsBeingPickedUp();
-            
+
     //        if( pickupItem != ItemType.None )
     //        {
     //            ItemData itemData = Database.Item.FindItem( pickupItem );
@@ -127,10 +133,10 @@ public class CharacterMovementView : MonoBehaviour
         SetSortingOrderOfItem( m_MovementModel.WeaponParent, sortingOrder );
     }
 
-    //public void SetSortingOrderOfPickupItem( int sortingOrder )
-    //{
-    //    SetSortingOrderOfItem( m_MovementModel.PickupItemParent, sortingOrder );
-    //}
+    public void SetSortingOrderOfPickupItem( int sortingOrder )
+    {
+        SetSortingOrderOfItem( m_MovementModel.PickupItemParent, sortingOrder );
+    }
 
     //public void ShowShield()
     //{

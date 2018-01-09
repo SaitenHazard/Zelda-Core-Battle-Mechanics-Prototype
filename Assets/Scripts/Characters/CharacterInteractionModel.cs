@@ -6,24 +6,24 @@ using System.Collections.Generic;
 public class CharacterInteractionModel : MonoBehaviour
 {
     private Character m_Character;
-    //private Collider2D m_Collider;
+    private Collider2D m_Collider;
     private CharacterMovementModel m_MovementModel;
-    //private InteractablePickup m_PickedUpObject;
+    private InteractablePickup m_PickedUpObject;
 
     void Awake()
     {
         m_Character = GetComponent<Character>();
-        //m_Collider = GetComponent<Collider2D>();
+        m_Collider = GetComponent<Collider2D>();
         m_MovementModel = GetComponent<CharacterMovementModel>();
     }
 
     public void OnInteract()
     {
-        //if (IsCarryingObject() == true)
-        //{
-        //    ThrowCarryingObject();
-        //    return;
-        //}
+        if (IsCarryingObject() == true)
+        {
+            ThrowCarryingObject();
+            return;
+        }
 
         InteractableBase usableInteractable = FindUsableInteractable();
 
@@ -77,45 +77,47 @@ public class CharacterInteractionModel : MonoBehaviour
         return closestInteractable;
     }
 
-    //public void PickupObject(InteractablePickup pickupObject)
-    //{
-    //    m_PickedUpObject = pickupObject;
+    public void PickupObject(InteractablePickup pickupObject)
+    {
+        m_PickedUpObject = pickupObject;
 
-    //    m_PickedUpObject.transform.parent = m_MovementModel.PickupItemParent;
-    //    m_PickedUpObject.transform.localPosition = Vector3.zero;
+        m_MovementModel.setCarrying(true);
 
-    //    //m_MovementModel.SetFrozen( true, false, false );
-    //    m_MovementModel.SetIsAbleToAttack(false);
+        m_PickedUpObject.transform.parent = m_MovementModel.PickupItemParent;
+        m_PickedUpObject.transform.localPosition = Vector3.zero;
 
-    //    Helper.SetSortingLayerForAllRenderers(pickupObject.transform, "Characters");
+        m_MovementModel.SetFrozen( true, false, false );
+        m_MovementModel.SetIsAbleToAttack(false);
 
-    //    Collider2D pickupObjectCollider = pickupObject.GetComponent<Collider2D>();
+        Helper.SetSortingLayerForAllRenderers(pickupObject.transform, "Characters");
 
-    //    if (pickupObjectCollider != null)
-    //    {
-    //        pickupObjectCollider.enabled = false;
-    //    }
-    //}
+        Collider2D pickupObjectCollider = pickupObject.GetComponent<Collider2D>();
 
-    //public void ThrowCarryingObject()
-    //{
-    //    Collider2D pickupObjectCollider = m_PickedUpObject.GetComponent<Collider2D>();
+        if (pickupObjectCollider != null)
+        {
+            pickupObjectCollider.enabled = false;
+        }
+    }
 
-    //    if (pickupObjectCollider != null)
-    //    {
-    //        pickupObjectCollider.enabled = true;
-    //        Physics2D.IgnoreCollision(m_Collider, pickupObjectCollider);
-    //    }
+    public void ThrowCarryingObject()
+    {
+        Collider2D pickupObjectCollider = m_PickedUpObject.GetComponent<Collider2D>();
 
-    //    m_PickedUpObject.Throw(m_Character);
-    //    m_PickedUpObject = null;
+        if (pickupObjectCollider != null)
+        {
+            pickupObjectCollider.enabled = true;
+            Physics2D.IgnoreCollision(m_Collider, pickupObjectCollider);
+        }
 
-    //    //m_MovementModel.SetFrozen( false, false, false );
-    //    m_MovementModel.SetIsAbleToAttack(true);
-    //}
+        m_PickedUpObject.Throw(m_Character);
+        m_PickedUpObject = null;
 
-    //public bool IsCarryingObject()
-    //{
-    //    return m_PickedUpObject != null;
-    //}
+        //m_MovementModel.SetFrozen( false, false, false );
+        m_MovementModel.SetIsAbleToAttack(true);
+    }
+
+    public bool IsCarryingObject()
+    {
+        return m_PickedUpObject != null;
+    }
 }

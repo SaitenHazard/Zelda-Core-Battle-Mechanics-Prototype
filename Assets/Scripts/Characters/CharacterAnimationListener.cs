@@ -63,13 +63,13 @@ public class CharacterAnimationListener : MonoBehaviour
         }
     }
 
-    //public void SetSortingOrderOfPickupItem(int sortingOrder)
-    //{
-    //    if (MovementView != null)
-    //    {
-    //        MovementView.SetSortingOrderOfPickupItem(sortingOrder);
-    //    }
-    //}
+    public void SetSortingOrderOfPickupItem(int sortingOrder)
+    {
+        if (MovementView != null)
+        {
+            MovementView.SetSortingOrderOfPickupItem(sortingOrder);
+        }
+    }
 
     //public void SetShieldDirection(string direction)
     //{

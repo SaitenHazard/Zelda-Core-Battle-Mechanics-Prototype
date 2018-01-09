@@ -12,14 +12,10 @@ public class DropItemOnDestroy : MonoBehaviour
 
     void OnLootDrop()
     {
-        Debug.Log("Found Function");
-
         float randomValue = Random.Range(0f, 1f);
 
         if (randomValue > Probability)
         {
-            Debug.Log("Improbable");
-
             return;
         }
 

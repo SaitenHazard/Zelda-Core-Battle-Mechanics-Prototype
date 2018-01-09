@@ -7,7 +7,7 @@ public class CharacterMovementModel : MonoBehaviour
     public float Speed;
     public Transform WeaponParent;
     //public Transform ShieldParent;
-    //public Transform PickupItemParent;
+    public Transform PickupItemParent;
 
     private Vector3 m_MovementDirection;
     private Vector3 m_FacingDirection;
@@ -18,6 +18,7 @@ public class CharacterMovementModel : MonoBehaviour
     private bool m_IsFrozen;
     private bool m_IsDirectionFrozen;
     private bool m_IsAttacking;
+    private bool isCarrying;
     //private ItemType m_PickingUpObject = ItemType.None;
 
     private ItemType m_EquippedWeapon = ItemType.None;
@@ -169,6 +170,16 @@ public class CharacterMovementModel : MonoBehaviour
 
             m_Body.velocity = m_MovementDirection * speed;
         }
+    }
+
+    public void setCarrying(bool carrying)
+    {
+        isCarrying = carrying;
+    }
+
+    public bool getIsCarrying()
+    {
+        return isCarrying;
     }
 
     public void SetOverrideSpeedEnabled( bool enabled, float speed = 0f )

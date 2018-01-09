@@ -35,14 +35,14 @@ public class AttackableBush : AttackableBase
         DropLoot();
     }
 
-    //void OnPickupObject( Character character )
-    //{
-    //    CreateDestroyedPrefab();
-    //    DropLoot();
-    //}
+    void OnPickupObject( Character character )
+    {
+        CreateDestroyedPrefab();
+        DropLoot();
+    }
 
-    //void OnObjectThrown()
-    //{
-    //    DestroyBush();
-    //}
+    void OnObjectThrown()
+    {
+        DestroyBush();
+    }
 }
