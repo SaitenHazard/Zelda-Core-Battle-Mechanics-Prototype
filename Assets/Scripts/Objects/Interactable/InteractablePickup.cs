@@ -4,7 +4,7 @@ using System.Collections;
 public class InteractablePickup : InteractableBase
 {
     public float ThrowDistance = 5;
-    public float ThrowSpeed = 3;
+    public float ThrowSpeed = 6;
 
     Vector3 m_CharacterThrowPosition;
     Vector3 m_ThrowDirection;
@@ -34,12 +34,12 @@ public class InteractablePickup : InteractableBase
 
         Vector3 targetPosition = characterThrowPosition + throwDirection.normalized * ThrowDistance;
 
-        while( transform.position != targetPosition )
+        while ( transform.position != targetPosition )
         {
             transform.position = Vector3.MoveTowards( transform.position, targetPosition, ThrowSpeed * Time.deltaTime );
             yield return null;
         }
 
-        BroadcastMessage( "OnObjectThrown", SendMessageOptions.DontRequireReceiver );
+        BroadcastMessage( "OnObjectThrown", SendMessageOptions.RequireReceiver );
     }
 }

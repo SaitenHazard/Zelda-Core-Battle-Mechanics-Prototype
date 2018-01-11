@@ -19,7 +19,7 @@ public class CharacterInteractionModel : MonoBehaviour
 
     public void OnInteract()
     {
-        if (IsCarryingObject() == true)
+        if (m_MovementModel.getIsCarrying() == true)
         {
             ThrowCarryingObject();
             return;
@@ -86,7 +86,7 @@ public class CharacterInteractionModel : MonoBehaviour
         m_PickedUpObject.transform.parent = m_MovementModel.PickupItemParent;
         m_PickedUpObject.transform.localPosition = Vector3.zero;
 
-        m_MovementModel.SetFrozen( true, false, false );
+        //m_MovementModel.SetFrozen( true, false, false );
         m_MovementModel.SetIsAbleToAttack(false);
 
         Helper.SetSortingLayerForAllRenderers(pickupObject.transform, "Characters");
@@ -114,6 +114,7 @@ public class CharacterInteractionModel : MonoBehaviour
 
         //m_MovementModel.SetFrozen( false, false, false );
         m_MovementModel.SetIsAbleToAttack(true);
+        m_MovementModel.setCarrying(false);
     }
 
     public bool IsCarryingObject()
