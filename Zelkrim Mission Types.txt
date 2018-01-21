@@ -23,3 +23,4 @@ Mission with many approaches / Gameplay choices
 Quick Time Event Mission
 Throw based mission
 Do literally nothing for x time mission
+Mount based mission
