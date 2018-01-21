@@ -1,0 +1,25 @@
+Survival
+No Item Use
+No Basic Attack
+Escort (Combat Ally)
+Escort (Protect)
+Puzzle
+Riddle
+Maze
+Simple Fetch Quest (Kill x enemies)
+Simple Fetch Quest (Collect x Items)
+Simple Fetch Quest (Talk to x number of people)
+Game Intro Mission
+Binding of Isaac intro
+Crafting Intro
+RPG Game Intro
+Time Limit mission
+Mini Games Intro
+Stealth mission
+Final Boss Battle
+Detective Mission
+Mission with moral choice
+Mission with many approaches / Gameplay choices
+Quick Time Event Mission
+Throw based mission
+Do literally nothing for x time mission
