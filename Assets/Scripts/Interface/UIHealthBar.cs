@@ -22,6 +22,6 @@ public class UIHealthBar : MonoBehaviour
 
     void UpdateHealthBar()
     {
-        HealthBar.localScale = new Vector3( HealthModel.GetHealthPercentage(), 1f, 1f );
+        //HealthBar.localScale = new Vector3( HealthModel.GetHealthPercentage(), 1f, 1f );
     }
 }
