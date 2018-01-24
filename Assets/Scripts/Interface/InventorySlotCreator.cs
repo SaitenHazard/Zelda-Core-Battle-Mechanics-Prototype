@@ -26,7 +26,8 @@ public class InventorySlotCreator : MonoBehaviour {
 
             GameObject temp = Instantiate(slotPrefab);
             temp.name = "Slot" + (i + 1).ToString();
-            temp.transform.parent = gameObject.transform;
+            //temp.transform.parent = gameObject.transform;
+            temp.transform.SetParent(gameObject.transform);
 
             RectTransform tempRect = temp.GetComponent<RectTransform>();
             //temp.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -37,7 +38,7 @@ public class InventorySlotCreator : MonoBehaviour {
             tempRect.pivot = new Vector2(0f, 0f);
 
             tempRect.anchoredPosition = new Vector2(tempWidth, 0f);
-            Debug.Log(tempWidth);
+            //Debug.Log(tempWidth);
         }
     }
 

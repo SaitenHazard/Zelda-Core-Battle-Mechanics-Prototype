@@ -9,6 +9,7 @@ public class CharacterInteractionModel : MonoBehaviour
     private Collider2D m_Collider;
     private CharacterMovementModel m_MovementModel;
     private InteractablePickup m_PickedUpObject;
+    private string m_pickupDefaultLayer;
 
     void Awake()
     {
@@ -21,7 +22,7 @@ public class CharacterInteractionModel : MonoBehaviour
     {
         if (m_MovementModel.getIsCarrying() == true)
         {
-            ThrowCarryingObject();
+            ThrowCarryingObject(false);
             return;
         }
 
@@ -33,6 +34,19 @@ public class CharacterInteractionModel : MonoBehaviour
         }
 
         usableInteractable.OnInteract(m_Character);
+    }
+
+    public void DropPickUp()
+    {
+        if (m_MovementModel.getIsCarrying() == true)
+        {
+            ThrowCarryingObject(true);
+            return;
+        }
+        else
+        {
+            Debug.Log("Error: No held item");
+        }
     }
 
     public Collider2D[] GetCloseColliders()
@@ -86,10 +100,11 @@ public class CharacterInteractionModel : MonoBehaviour
         m_PickedUpObject.transform.parent = m_MovementModel.PickupItemParent;
         m_PickedUpObject.transform.localPosition = Vector3.zero;
 
+
         //m_MovementModel.SetFrozen( true, false, false );
         m_MovementModel.SetIsAbleToAttack(false);
 
-        Helper.SetSortingLayerForAllRenderers(pickupObject.transform, "Characters");
+        SetLayer(pickupObject.transform, "Characters");
 
         Collider2D pickupObjectCollider = pickupObject.GetComponent<Collider2D>();
 
@@ -99,7 +114,7 @@ public class CharacterInteractionModel : MonoBehaviour
         }
     }
 
-    public void ThrowCarryingObject()
+    public void ThrowCarryingObject(bool dropped)
     {
         Collider2D pickupObjectCollider = m_PickedUpObject.GetComponent<Collider2D>();
 
@@ -109,12 +124,30 @@ public class CharacterInteractionModel : MonoBehaviour
             Physics2D.IgnoreCollision(m_Collider, pickupObjectCollider);
         }
 
-        m_PickedUpObject.Throw(m_Character);
+        m_PickedUpObject.Throw(m_Character, dropped);
+
+        if (dropped == true)
+            StartCoroutine(SetLayer(m_PickedUpObject.transform, "Default", 1f));
+
         m_PickedUpObject = null;
 
         //m_MovementModel.SetFrozen( false, false, false );
         m_MovementModel.SetIsAbleToAttack(true);
         m_MovementModel.setCarrying(false);
+        Physics2D.IgnoreCollision(m_Collider, pickupObjectCollider, false);
+
+    }
+
+    IEnumerator SetLayer(Transform transform, string layerName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        Helper.SetSortingLayerForAllRenderers(transform, layerName);
+    }
+
+    private void SetLayer(Transform transform, string layerName)
+    {
+        Helper.SetSortingLayerForAllRenderers(transform, layerName);
     }
 
     public bool IsCarryingObject()

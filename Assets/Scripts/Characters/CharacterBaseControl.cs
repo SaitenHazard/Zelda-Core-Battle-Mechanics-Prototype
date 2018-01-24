@@ -47,6 +47,11 @@ public class CharacterBaseControl : MonoBehaviour
         m_MovementModel.SetDirection( direction );
     }
 
+    protected void Drop()
+    {
+        m_InteractionModel.DropPickUp();
+    }
+
     protected void OnActionPressed()
     {
         if( m_InteractionModel == null )

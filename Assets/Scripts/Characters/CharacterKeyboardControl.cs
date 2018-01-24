@@ -13,12 +13,13 @@ public class CharacterKeyboardControl : CharacterBaseControl
         UpdateDirection();
         UpdateAction();
         UpdateAttack();
+        UpdateDrop();
     }
 
     
     void UpdateAttack()
     {
-        if( Input.GetKeyDown( KeyCode.Space ) )
+        if( Input.GetKeyDown( KeyCode.D ) )
         {
             OnAttackPressed();
         }
@@ -27,9 +28,17 @@ public class CharacterKeyboardControl : CharacterBaseControl
 
     void UpdateAction()
     {
-        if( Input.GetKeyDown( KeyCode.E ) )
+        if( Input.GetKeyDown( KeyCode.S ) )
         {
             OnActionPressed();
+        }
+    }
+
+    void UpdateDrop()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Drop();
         }
     }
 
@@ -37,22 +46,22 @@ public class CharacterKeyboardControl : CharacterBaseControl
     {
         Vector2 newDirection = Vector2.zero;
 
-        if( Input.GetKey( KeyCode.W ) )
+        if( Input.GetKey( KeyCode.UpArrow ) )
         {
             newDirection.y = 1;
         }
 
-        if( Input.GetKey( KeyCode.S ) )
+        if( Input.GetKey( KeyCode.DownArrow ) )
         {
             newDirection.y = -1;
         }
 
-        if( Input.GetKey( KeyCode.A ) )
+        if( Input.GetKey( KeyCode.LeftArrow ) )
         {
             newDirection.x = -1;
         }
 
-        if( Input.GetKey( KeyCode.D ) )
+        if( Input.GetKey( KeyCode.RightArrow ) )
         {
             newDirection.x = 1;
         }
