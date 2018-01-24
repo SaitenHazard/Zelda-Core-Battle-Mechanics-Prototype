@@ -5,6 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Character))]
 public class CharacterInteractionModel : MonoBehaviour
 {
+    private CharacterPocketModel m_PocketModel;
     private Character m_Character;
     private Collider2D m_Collider;
     private CharacterMovementModel m_MovementModel;
@@ -17,6 +18,7 @@ public class CharacterInteractionModel : MonoBehaviour
         m_Character = GetComponent<Character>();
         m_Collider = GetComponent<Collider2D>();
         m_MovementModel = GetComponent<CharacterMovementModel>();
+        m_PocketModel = GetComponent<CharacterPocketModel>();
     }
 
     public void OnInteract()
@@ -48,12 +50,21 @@ public class CharacterInteractionModel : MonoBehaviour
                 return;
             }
 
-            
+            m_PocketModel.AddItem(pocketItem.getType());
+            Destroy(m_PickedUpObject.gameObject);
+            SetUncarry();
         }
         else
         {
             return;
         }
+    }
+
+    private void SetUncarry()
+    {
+        m_PickedUpObject = null;
+        m_MovementModel.SetIsAbleToAttack(true);
+        m_MovementModel.setCarrying(false);
     }
 
     public void DropPickUp()
@@ -148,13 +159,9 @@ public class CharacterInteractionModel : MonoBehaviour
         if (dropped == true)
             StartCoroutine(SetLayer(m_PickedUpObject.transform, "Default", 1f));
 
-        m_PickedUpObject = null;
-
         //m_MovementModel.SetFrozen( false, false, false );
-        m_MovementModel.SetIsAbleToAttack(true);
-        m_MovementModel.setCarrying(false);
         Physics2D.IgnoreCollision(m_Collider, pickupObjectCollider, false);
-
+        SetUncarry();
     }
 
     IEnumerator SetLayer(Transform transform, string layerName, float delay)

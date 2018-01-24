@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventorySlotView : MonoBehaviour {
     public float slotWidth = 120f;
@@ -33,7 +34,7 @@ public class InventorySlotView : MonoBehaviour {
             float tempWidth = slotWidth * i;
 
             GameObject temp = Instantiate(slotPrefab);
-            temp.name = "Slot" + (i + 1).ToString();
+            temp.name = "Slot" + i.ToString();
             //temp.transform.parent = gameObject.transform;
             temp.transform.SetParent(gameObject.transform);
 
@@ -78,10 +79,17 @@ public class InventorySlotView : MonoBehaviour {
         string slotName = "Slot" + index.ToString();
 
         pocketItemData itemData = Database.pItem.FindItem(itemType);
-
         GameObject tempSlot = gameObject.transform.Find(slotName).gameObject;
-        GameObject tempImage = tempSlot.transform.Find("Visuals").gameObject;
+        GameObject tempObject = tempSlot.transform.GetChild(0).gameObject;
 
-        tempImage.GetComponent<SpriteRenderer>().sprite = itemData.Prefab.GetComponent<SpriteRenderer>().sprite;
+        Image image = tempObject.GetComponent<Image>();
+        image.enabled = true;
+        tempObject = itemData.TypePrefab;
+        Sprite sprite = tempObject.GetComponentInChildren<SpriteRenderer>().sprite;
+
+        image.sprite = sprite;
+
+        Debug.Log(image);
+        Debug.Log(sprite);
     }
 }

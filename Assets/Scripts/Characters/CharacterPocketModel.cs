@@ -10,7 +10,6 @@ public class CharacterPocketModel : MonoBehaviour
 
     public void AddItem(PocketItemType itemType, int amount)
     {
-      
         for (int i = 0; i < maxInventorySize; i++)
         {
             AddItem(itemType);

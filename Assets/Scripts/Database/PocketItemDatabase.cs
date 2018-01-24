@@ -31,5 +31,5 @@ public class pocketItemData
     //}
 
     public PocketItemType Type;
-    public GameObject Prefab;
+    public GameObject TypePrefab;
 }

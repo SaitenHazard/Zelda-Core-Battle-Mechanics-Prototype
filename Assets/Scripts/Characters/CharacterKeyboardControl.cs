@@ -29,7 +29,7 @@ public class CharacterKeyboardControl : CharacterBaseControl
     {
         if ( Input.GetKeyDown( KeyCode.W))
         {
-            
+            InventoryAction();
         }
     }
 
