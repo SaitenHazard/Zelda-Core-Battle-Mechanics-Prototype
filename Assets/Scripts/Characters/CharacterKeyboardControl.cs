@@ -14,9 +14,9 @@ public class CharacterKeyboardControl : CharacterBaseControl
         UpdateAction();
         UpdateAttack();
         UpdateDrop();
+        UpdateAddToInventory();
     }
 
-    
     void UpdateAttack()
     {
         if( Input.GetKeyDown( KeyCode.D ) )
@@ -24,7 +24,14 @@ public class CharacterKeyboardControl : CharacterBaseControl
             OnAttackPressed();
         }
     }
-    
+
+    void UpdateAddToInventory()
+    {
+        if ( Input.GetKeyDown( KeyCode.W))
+        {
+            
+        }
+    }
 
     void UpdateAction()
     {

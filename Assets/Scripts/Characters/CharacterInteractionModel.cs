@@ -9,6 +9,7 @@ public class CharacterInteractionModel : MonoBehaviour
     private Collider2D m_Collider;
     private CharacterMovementModel m_MovementModel;
     private InteractablePickup m_PickedUpObject;
+    private PocketBase pocketItem;
     private string m_pickupDefaultLayer;
 
     void Awake()
@@ -34,6 +35,25 @@ public class CharacterInteractionModel : MonoBehaviour
         }
 
         usableInteractable.OnInteract(m_Character);
+    }
+
+    public void InventoryAction()
+    {
+        if (m_MovementModel.getIsCarrying() == true)
+        {
+            pocketItem = m_PickedUpObject.GetComponent<PocketBase>();
+
+            if(pocketItem == null)
+            {
+                return;
+            }
+
+            
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void DropPickUp()
@@ -99,7 +119,6 @@ public class CharacterInteractionModel : MonoBehaviour
 
         m_PickedUpObject.transform.parent = m_MovementModel.PickupItemParent;
         m_PickedUpObject.transform.localPosition = Vector3.zero;
-
 
         //m_MovementModel.SetFrozen( true, false, false );
         m_MovementModel.SetIsAbleToAttack(false);

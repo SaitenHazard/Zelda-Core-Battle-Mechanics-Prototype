@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventorySlotCreator : MonoBehaviour {
-    public int numberOfQuickSlots;
+public class InventorySlotView : MonoBehaviour {
     public float slotWidth = 120f;
     public GameObject slotPrefab;
-     
-	void Start ()
+
+    public CharacterPocketModel m_PocketModel;
+
+    private int numberOfSlots;
+
+    private void Awake()
+    {
+        numberOfSlots = m_PocketModel.GetMaxSize();
+    }
+
+    void Start ()
     {
         CreateQuickInventorySlots();
     }
@@ -20,7 +28,7 @@ public class InventorySlotCreator : MonoBehaviour {
 
     void createInventorySlots()
     {
-        for ( int i = 0; i < numberOfQuickSlots; i++)
+        for ( int i = 0; i < numberOfSlots; i++)
         {
             float tempWidth = slotWidth * i;
 
@@ -44,11 +52,36 @@ public class InventorySlotCreator : MonoBehaviour {
 
     void setInventoryHolderSize()
     {
-        (gameObject.GetComponent<RectTransform>()).sizeDelta = new Vector2(slotWidth * numberOfQuickSlots, slotWidth);
+        (gameObject.GetComponent<RectTransform>()).sizeDelta = new Vector2(slotWidth * numberOfSlots, slotWidth);
     }
 
 	void Update ()
     {
-		
-	}
+        UpdateQuickInventoryView();
+    }
+
+    void UpdateQuickInventoryView()
+    {
+        for ( int i = 0; i < numberOfSlots; i++)
+        {
+            PocketItemType item = m_PocketModel.getInventoryItem(i);
+
+            if (item != PocketItemType.Null)
+            {
+                SetSlotImage(item, i);
+            }
+        }
+    }
+
+    private void SetSlotImage(PocketItemType itemType, int index)
+    {
+        string slotName = "Slot" + index.ToString();
+
+        pocketItemData itemData = Database.pItem.FindItem(itemType);
+
+        GameObject tempSlot = gameObject.transform.Find(slotName).gameObject;
+        GameObject tempImage = tempSlot.transform.Find("Visuals").gameObject;
+
+        tempImage.GetComponent<SpriteRenderer>().sprite = itemData.Prefab.GetComponent<SpriteRenderer>().sprite;
+    }
 }

@@ -47,6 +47,8 @@ public class CharacterMovementView : MonoBehaviour
         Animator.SetBool("IsCarrying", m_MovementModel.getIsCarrying());
     }
 
+    
+
     //void UpdateShield()
     //{
     //    Animator.SetBool( "HasShield", m_MovementModel.GetEquippedShield() != ItemType.None );

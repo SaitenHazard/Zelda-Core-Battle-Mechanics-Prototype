@@ -37,6 +37,11 @@ public class CharacterBaseControl : MonoBehaviour
         return direction;
     }
 
+    protected void InventoryAction()
+    {
+        m_InteractionModel.InventoryAction();
+    }
+
     protected void SetDirection( Vector2 direction )
     {
         if( m_MovementModel == null )

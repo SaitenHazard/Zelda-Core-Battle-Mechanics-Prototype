@@ -13,6 +13,7 @@ public class CharacterInventoryModel : MonoBehaviour
         m_MovementModel = GetComponent<CharacterMovementModel>();
     }
 
+
     public int GetItemCount(ItemType itemType)
     {
         if (m_Items.ContainsKey(itemType) == false)
