@@ -59,6 +59,7 @@ public class InventorySlotView : MonoBehaviour {
 	void Update ()
     {
         UpdateQuickInventoryView();
+        UpdateSlotSelected();
     }
 
     void UpdateQuickInventoryView()
@@ -71,25 +72,78 @@ public class InventorySlotView : MonoBehaviour {
             {
                 SetSlotImage(item, i);
             }
+            else
+            {
+                SetEmptySlotImage(i);
+            }
+        }
+    }
+
+    private void SetEmptySlotImage(int index)
+    {
+        string slotName = getSlotName(index);
+
+        GameObject tempSlotObject = getImage(index);
+
+        Image image = tempSlotObject.GetComponent<Image>();
+
+        image.enabled = false;
+    }
+
+    private void UpdateSlotSelected()
+    {
+        int selectedSlotID = m_PocketModel.getSelectedID();
+
+        string slotName;
+        GameObject tempSlot;
+        Image image;
+
+        for (int i = 0; i <numberOfSlots; i++)
+        {
+            slotName = getSlotName(i);
+            tempSlot = gameObject.transform.Find(slotName).gameObject;
+            image = tempSlot.GetComponent<Image>();
+
+            if (selectedSlotID == i)
+            {
+                image.color = Color.white;
+            }
+            else
+            {
+                image.color = Color.black;
+            }
         }
     }
 
     private void SetSlotImage(PocketItemType itemType, int index)
     {
-        string slotName = "Slot" + index.ToString();
+        string slotName = getSlotName(index);
 
         pocketItemData itemData = Database.pItem.FindItem(itemType);
+
+        GameObject tempSlotObject = getImage(index);
+        Image image = tempSlotObject.GetComponent<Image>();
+
+        image.enabled = true;
+        tempSlotObject = itemData.TypePrefab;
+        Sprite sprite = tempSlotObject.GetComponentInChildren<SpriteRenderer>().sprite;
+
+        image.sprite = sprite;
+    }
+
+    private GameObject getImage(int index)
+    {
+        string slotName = getSlotName(index);
         GameObject tempSlot = gameObject.transform.Find(slotName).gameObject;
         GameObject tempObject = tempSlot.transform.GetChild(0).gameObject;
 
-        Image image = tempObject.GetComponent<Image>();
-        image.enabled = true;
-        tempObject = itemData.TypePrefab;
-        Sprite sprite = tempObject.GetComponentInChildren<SpriteRenderer>().sprite;
+        return tempObject;
+    }
 
-        image.sprite = sprite;
+    private string getSlotName(int index)
+    {
+        string slotName = "Slot" + index.ToString();
 
-        Debug.Log(image);
-        Debug.Log(sprite);
+        return slotName;
     }
 }

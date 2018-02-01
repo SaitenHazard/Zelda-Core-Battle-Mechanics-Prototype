@@ -6,12 +6,14 @@ public class CharacterBaseControl : MonoBehaviour
     protected CharacterMovementModel m_MovementModel;
     protected CharacterInteractionModel m_InteractionModel;
     protected CharacterMovementView m_MovementView;
+    protected CharacterPocketModel m_pocketModel;
 
     void Awake()
     {
         m_MovementModel = GetComponent<CharacterMovementModel>();
         m_MovementView = GetComponent<CharacterMovementView>();
         m_InteractionModel = GetComponent<CharacterInteractionModel>();
+        m_pocketModel = GetComponent<CharacterPocketModel>();
     }
 
     protected Vector2 GetDiagonalizedDirection( Vector2 direction, float threshold )
@@ -55,6 +57,16 @@ public class CharacterBaseControl : MonoBehaviour
     protected void Drop()
     {
         m_InteractionModel.DropPickUp();
+    }
+
+    protected void selectSlotBackward()
+    {
+        m_pocketModel.changeSelectedSlotID(false);
+    }
+
+    protected void selectSlotForward()
+    {
+        m_pocketModel.changeSelectedSlotID(true);
     }
 
     protected void OnActionPressed()

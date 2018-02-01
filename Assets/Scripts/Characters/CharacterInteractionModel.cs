@@ -50,13 +50,27 @@ public class CharacterInteractionModel : MonoBehaviour
                 return;
             }
 
+            if(m_PocketModel.GetNumberOfItems() == m_PocketModel.GetMaxSize())
+            {
+                Debug.Log("Full!");
+                return;
+            }
+
             m_PocketModel.AddItem(pocketItem.getType());
             Destroy(m_PickedUpObject.gameObject);
             SetUncarry();
         }
         else
         {
-            return;
+            PocketItemType item = m_PocketModel.GetSelectedItem();
+
+            if (item == PocketItemType.Null) return;
+
+            pocketItemData itemData = Database.pItem.FindItem(item);
+            GameObject gameObject = itemData.TypePrefab;
+            InstantiateInventoryItem(gameObject);
+
+            m_PocketModel.RemoveSelectedItem();
         }
     }
 
@@ -120,6 +134,12 @@ public class CharacterInteractionModel : MonoBehaviour
         }
 
         return closestInteractable;
+    }
+
+    private void InstantiateInventoryItem(GameObject gameObject)
+    {
+        GameObject newGameObject = Instantiate(gameObject);
+        PickupObject(newGameObject.GetComponent<InteractablePickup>());
     }
 
     public void PickupObject(InteractablePickup pickupObject)

@@ -14,7 +14,8 @@ public class CharacterKeyboardControl : CharacterBaseControl
         UpdateAction();
         UpdateAttack();
         UpdateDrop();
-        UpdateAddToInventory();
+        UpdateInventoryInteraction();
+        UpdateSelectedSlot();
     }
 
     void UpdateAttack()
@@ -25,11 +26,24 @@ public class CharacterKeyboardControl : CharacterBaseControl
         }
     }
 
-    void UpdateAddToInventory()
+    void UpdateInventoryInteraction()
     {
         if ( Input.GetKeyDown( KeyCode.W))
         {
             InventoryAction();
+        }
+    }
+
+    void UpdateSelectedSlot()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            selectSlotBackward();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            selectSlotForward();
         }
     }
 
