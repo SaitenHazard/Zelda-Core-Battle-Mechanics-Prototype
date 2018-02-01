@@ -83,7 +83,7 @@ public class InventorySlotView : MonoBehaviour {
     {
         string slotName = getSlotName(index);
 
-        GameObject tempSlotObject = getImage(index);
+        GameObject tempSlotObject = getSlotObject(index);
 
         Image image = tempSlotObject.GetComponent<Image>();
 
@@ -121,7 +121,7 @@ public class InventorySlotView : MonoBehaviour {
 
         pocketItemData itemData = Database.pItem.FindItem(itemType);
 
-        GameObject tempSlotObject = getImage(index);
+        GameObject tempSlotObject = getSlotObject(index);
         Image image = tempSlotObject.GetComponent<Image>();
 
         image.enabled = true;
@@ -131,7 +131,7 @@ public class InventorySlotView : MonoBehaviour {
         image.sprite = sprite;
     }
 
-    private GameObject getImage(int index)
+    private GameObject getSlotObject(int index)
     {
         string slotName = getSlotName(index);
         GameObject tempSlot = gameObject.transform.Find(slotName).gameObject;

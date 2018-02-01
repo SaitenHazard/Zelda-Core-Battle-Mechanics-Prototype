@@ -1,11 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class InteractableChest : InteractableBase
 {
     public Sprite OpenChestSprite;
     public ItemType ItemInChest;
     public int Amount;
+    public string Text;
+    public SaveLoadSystem saveLoadSystem;
 
     private bool m_IsOpen;
     private SpriteRenderer m_Renderer;
@@ -17,13 +22,19 @@ public class InteractableChest : InteractableBase
 
     public override void OnInteract( Character character )
     {
-        if ( m_IsOpen == true )
+        if (DialogBox.IsVisible() == true)
         {
-            return;
+            SaveLoadSystem.control.SaveGame();
+            character.Movement.SetFrozen(false, false, true);
+            DialogBox.Hide();
         }
-
-        character.Inventory.AddItem( ItemInChest, Amount );
-        m_Renderer.sprite = OpenChestSprite;
-        m_IsOpen = true;
+        else
+        {
+            character.Movement.SetFrozen(true, true, true);
+            DialogBox.Show(Text);
+        }
     }
+
+    
 }
+
