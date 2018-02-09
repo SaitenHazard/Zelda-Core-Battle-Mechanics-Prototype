@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateFollowPlayer : IState
+public class StateRotate : IState
 {
-    public StateFollowPlayer()
+    private CharacterBaseControl m_Control;
+
+    public StateRotate(GameObject o_player, CharacterBaseControl control)
     {
 
+        m_Control = control;
     }
 
     public override void Enter()
     {
-        base.Enter();
+
     }
 
     public override void Execute()
