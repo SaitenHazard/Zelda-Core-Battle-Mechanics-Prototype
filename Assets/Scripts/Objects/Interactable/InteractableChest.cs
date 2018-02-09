@@ -35,6 +35,10 @@ public class InteractableChest : InteractableBase
         }
     }
 
-    
+    IEnumerator jolt()
+    {
+        yield return null;
+        
+    }
 }
 
